@@ -1,0 +1,29 @@
+#! /bin/sh
+
+sxhkd &
+setxkbmap -model abnt2 -layout br &
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+xsetroot -cursor_name left_ptr &
+
+MONITORES=`xrandr --listmonitors | grep -c 3`
+
+if [ "$MONITORES" == "2" ]; then
+	xrandr --output HDMI1 --mode 1366x768 --primary --right-of eDP1
+	bspc monitor HDMI1 -d VI VII VIII IX X
+	bspc monitor eDP1 -d I II III IV V
+	polybar hdmi1 &
+	polybar edp1 &
+	hsetroot -full /home/nuosr/Pictures/Wallpaper/beautiful_mountain_view_nature_landscape-wallpaper-2732x768.jpg
+else
+	xrandr --output eDP1 --mode 1366x768 --primary
+	bspc monitor eDP1 -d I II III IV V
+	polybar edp0 &
+	hsetroot -full /home/nuosr/Pictures/Wallpaper/zion_national_park_canyon_overlook_at
+fi

@@ -1,0 +1,38 @@
+ncmpcpp_directory = ~/.ncmpcpp
+lyrics_directory = ~/.lyrics
+
+mpd_host = localhost
+mpd_port = 6601
+
+mpd_music_dir = ~/Music
+
+audio_output {
+        type            "fifo"
+        name            "Visualizer feed"
+        path            "/tmp/mpd.fifo"
+        format          "44100:16:2"
+ }
+visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_type = wave
+visualizer_look = ●▮
+song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
+song_library_format = {%n - }{%t}|{%f}
+song_columns_list_format = (7f)[white]{l} (20)[white]{a} (50)[white]{t|f:Title}
+progressbar_look = "▃▃▃"
+progressbar_elapsed_color = "white"
+progressbar_color = "black"
+header_visibility = no
+titles_visibility = no
+follow_now_playing_lyrics = no
+fetch_lyrics_for_current_song_in_background = yes
+display_volume_level = no
+mouse_support = yes
+color1 = "white"
+color2 = "black"
+
+song_list_format = " $7%l  $2%t $R$5%a "
+
+statusbar_visibility = no
+
+execute_on_song_change = "~/.ncmpcpp/art.sh"
+
